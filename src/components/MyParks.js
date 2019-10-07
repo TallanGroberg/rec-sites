@@ -37,12 +37,19 @@ const MyParks = (props) => {
 };
 
 const ParkStyles = withTheme(styled.div`
- 
   margin: auto;
   left: 0;
   right: 0;
+
   p {
-    border-bottom: 1px solid black;
+    
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+  }
+
+  h4 {
+    margin-left: 5px;
   }
 
   .container {
@@ -53,7 +60,7 @@ const ParkStyles = withTheme(styled.div`
   button:focus {outline:0;}
 
   .desert {
-    color: ${props => props.theme === 'desert' ? '#CE7F4A' : ""};
+    color: ${props => props.theme === 'desert' ? '#42334F' : ""};
   
 
   background: none;
@@ -85,7 +92,8 @@ button:hover {
   a {
       text-decoration: none;
       color: ${props => props.theme === 'desert' ? '#8E0000' : "#A3B038"};
-      font-size: ${props => props.theme === 'desert' ? '' : ''}
+      font-size: ${props => props.theme === 'desert' ? '' : ''};
+      margin-left: 5px;
     }
     a:hover {
       color: black;
