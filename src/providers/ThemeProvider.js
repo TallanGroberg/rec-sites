@@ -22,7 +22,7 @@ class ThemeProvider extends Component {
 
   saveImage = (parkObj) => {
     this.setState( prev => {
-      
+
       const filterDublicates =  new Set([...prev.savedPlaces, parkObj, parkObj.saved = true])
       const backToArray = [...filterDublicates]
       const removeBool = backToArray.filter( aThing => {
@@ -63,7 +63,6 @@ class ThemeProvider extends Component {
         this.setState( prev => ({
           pingingArray: [...prev.pingingArray,  arg]
         }))
-        console.log('pingingArray ', this.state.pingingArray,)
     }
 
     //you actually see the object that got removed and the displaying parks array stays empty
@@ -89,7 +88,8 @@ class ThemeProvider extends Component {
         pushStorageToSavedPlaces: this.pushStorageToSavedPlaces,
         addToDisplayPark: this.addToDisplayPark,
         removeFromParksDisplaying: this.removeFromParksDisplaying,
-        removePark: this.removePark
+        removePark: this.removePark,
+        
 
       }}>
         {this.props.children}

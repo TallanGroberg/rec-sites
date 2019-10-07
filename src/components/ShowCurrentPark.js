@@ -48,11 +48,11 @@ const ShowCurrentPark = (props) => {
   )
 })
 
-
+console.log(localStorage.length)
   return (
     <div>
       
-      { pingingArray.length > 0 ? 
+      { pingingArray.length > 0 &&  localStorage.length > 0 ? 
 <>
         {mappedParks}
 </>

@@ -41,18 +41,45 @@ const ParkStyles = withTheme(styled.div`
   margin: auto;
   left: 0;
   right: 0;
+  div {
+    border-bottom: 1px solid black;
+  }
+
   .container {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 5px;
   }
+  button:focus {outline:0;}
+
+  .desert {
+    color: ${props => props.theme === 'desert' ? '#CE7F4A' : ""};
+  
+
+  background: none;
+  border: none;
+}
+
+.forest {
+  color: ${props => props.theme === 'forest' ? '#A3B038' : ''};
+  background: none;
+  border: none;
+}
+  button:active {
+  background: none;
+  display: hidden;
+  border: none;
+}
+
+button:hover {
+  color: black;
+}
 
   img {
     float: left;
     margin-right: 5px;
   }
-  p {
-  }
+
 
 
   a {
