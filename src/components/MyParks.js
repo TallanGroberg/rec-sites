@@ -41,7 +41,7 @@ const ParkStyles = withTheme(styled.div`
   margin: auto;
   left: 0;
   right: 0;
-  div {
+  p {
     border-bottom: 1px solid black;
   }
 
