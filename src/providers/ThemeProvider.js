@@ -22,11 +22,14 @@ class ThemeProvider extends Component {
 
   saveImage = (parkObj) => {
     this.setState( prev => {
-      const filterDublicates =  new Set([...prev.savedPlaces, parkObj.saved = true])
+      
+      const filterDublicates =  new Set([...prev.savedPlaces, parkObj, parkObj.saved = true])
       const backToArray = [...filterDublicates]
-      return {savedPlaces: backToArray}
+      const removeBool = backToArray.filter( aThing => {
+        return aThing !== true
+      })
+      return {savedPlaces: removeBool }
     })
-
   }
 
 
@@ -43,6 +46,17 @@ class ThemeProvider extends Component {
           savedPlaces: [...prev.savedPlaces, parkObj]
         }))
       }
+    }
+
+    removePark = (id) => {
+      this.setState( prev => {
+        // debugger
+        const filteredArray = prev.savedPlaces.filter( aPlace => {
+          return id !== aPlace.id
+        })
+        return  {savedPlaces: filteredArray}
+      })
+
     }
 
     addToDisplayPark = (arg) => {
@@ -70,12 +84,12 @@ class ThemeProvider extends Component {
         savedPlaces,
         pingingArray,
         changeTheme: this.changeTheme,
-        selectTheme: this.selectTheme,
         saveImage: this.saveImage,
         saveParkToLocalStorage: this.saveParkToLocalStorage,
         pushStorageToSavedPlaces: this.pushStorageToSavedPlaces,
         addToDisplayPark: this.addToDisplayPark,
         removeFromParksDisplaying: this.removeFromParksDisplaying,
+        removePark: this.removePark
 
       }}>
         {this.props.children}
@@ -91,3 +105,7 @@ export const withTheme = T => props => (
 )
 
 export default ThemeProvider;
+
+function newFunction(prev, parkObj) {
+  return new Set([...prev.savedPlaces, parkObj.saved = true]);
+}

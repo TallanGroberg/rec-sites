@@ -3,6 +3,7 @@ import axios from 'axios'
 import {Route, Switch } from 'react-router-dom'
 import { withTheme,  } from './providers/ThemeProvider'
 import styled from 'styled-components'
+
 import Nav from './components/Nav'
 import Home from './components/Home'
 import MyParks from './components/MyParks'
@@ -38,7 +39,7 @@ import raft from './images/raft.jpg'
 // pictures for sites 
 
 // make nice home page with pictures and a responsive grid. 
-// when image is clicked, take user to page about picture 
+
 
 //todos make the ability to comment with full crud on a specific park 
 //make users have identity with context
@@ -79,18 +80,22 @@ class App extends Component {
 
 
     componentDidMount(){
+
       axios.get("https://developer.nps.gov/api/v1/parks?limit=15&api_key=ITWTCahKz7ncRmMjAZ6IgeJ5QG1iZNe12NftfXaE")
       .then(res => {
+          
           this.setState({
               parks: res.data.data.map( (park, i) => {
               return {...park, picture: pictures[i],
                               saved: false,
               }
             })
+          
           })
-            
       })
       .catch(err => console.log(err))
+
+
     }
 
     render() {
@@ -104,18 +109,26 @@ class App extends Component {
             <Route exact path='/your-parks' render={ (rProps) => <MyParks {...rProps} parks={this.state.parks} /> } />
           </Switch>
         </Container>
-          <CheckStyles>
-            <CheckIndication />
-          </CheckStyles>
+
+          
       </>
     );
   }
 }
 
+  const Container = withTheme(styled.div`
+  
+        height: 100%;
+     
+        align-items: center;
+        background: ${props => props.theme === 'forest' ? 'linear-gradient(-45deg,#405C87,#2f5609)' : 'linear-gradient(45deg, #EEB686 ,#40314E)' };
+        * { 
+    font-family: ${props => props.theme === 'forest' ? 'Artifika' : 'Aclonica'};
+    font-style: normal; 
+    font-variant: normal; 
+      }
+  `);
 const CheckStyles = withTheme(styled.div`
-
-
-
 z-index: 2;
 display: flex;
 flex-direction: grid-row-end;
@@ -124,21 +137,14 @@ margin: auto;
 
 bottom: 20px;
 height: 100%;
-`);
 
-const Container = withTheme(styled.div`
-
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: ${props => props.theme === 'forest' ? 'linear-gradient(-45deg,#405C87,#2f5609)' : 'linear-gradient(45deg, #EEB686 ,#40314E)' };
-      * { 
+* { 
   font-family: ${props => props.theme === 'forest' ? 'Artifika' : 'Aclonica'};
   font-style: normal; 
   font-variant: normal; 
     }
 `);
+
 
 export default withTheme(App);
 

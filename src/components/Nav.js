@@ -27,63 +27,12 @@ const Nav = (props) => {
       </div>
       
     </NavStyle>
-      <InfoStyle>
-        <ShowCurrentPark />
-      </InfoStyle>
+     
     </>
   );
 };
 
-const InfoStyle = withTheme(styled.div`
 
-      z-index: 2;
-      position: sticky;
-      top: 0;
-      height: 100%;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: ${props => props.theme === 'forest' ? 'linear-gradient(-45deg,#405C87,#2f5609)' : 'linear-gradient(45deg, #EEB686 ,#40314E)' };
-
-      * { 
-      font-family: ${props => props.theme === 'forest' ? 'Artifika' : 'Aclonica'};
-      font-style: normal; 
-      font-variant: normal; 
-    }
-    button:focus {outline:0;}
-    button {
-      text-decoration: none;
-      color: ${props => props.theme === 'desert' ? '#8E0000' : "#A3B038"};
-      background: none;
-      border: none;
-    }
-    button:hover {
-      color: black;
-    }
-    a {
-      text-decoration: none;
-      color: ${props => props.theme === 'desert' ? '#8E0000' : "#A3B038"};
-      font-size: ${props => props.theme === 'desert' ? '' : ''}
-    }
-    a:hover {
-      color: black;
-    }
-    div > .options {
-      display: flex;
-      justify-content: space-between;
-      align-content: auto;
-    }
-
-    div > .details {
-      margin: 1em;
-    }
-
-
-
-
-`)
 
 const NavStyle = withTheme(styled.div`
 
